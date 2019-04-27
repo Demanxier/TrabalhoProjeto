@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://java.sun.com/jsf/facelets" >
+
+  <h:head>
+    <title>#{messages.APLICACAO_TITULO}</title>
+    <style type="text/css">
+      .ui-widget{font-size:90% !important;}
+    </style>
+  </h:head>
+  
+  <h:body style="background-image:url('resources/images/summer-background-wallpaper.jpg');
+          background-color:transparent;">
+
+    <h:form>
+      <p:layout fullPage="true">  
+
+        <p:layoutUnit position="north" size="100" resizable="false" closable="false" 
+                      collapsible="false" >  
+          <div align="center">
+            <font style="font-family: Verdana, sans-serif; color: green; font-size: 60px; 
+                  font-weight: bolder;"> #{messages.HOME_TITULO} </font> </div>
+        </p:layoutUnit>  
+
+        <p:layoutUnit position="south" size="50" resizable="false" 
+                      closable="false" collapsible="false" >  
+          <div align="center">
+            <h:outputText style="text-align: center;" value="#{messages.TEMPLATE_RODAPE}" />
+          </div>
+        </p:layoutUnit>  
+
+        <p:layoutUnit position="west" size="200" header="#{labels.menu_opcoes}" 
+                      resizable="false" closable="false" collapsible="false">  
+          
+          <p:commandButton action="/home.xhtml" ajax="false" 
+                           style="width: 180px; margin-left: 5px; 
+                           margin-right: 5px;" value="#{messages.TEMPLATE_MENU_INFO}" /> <br />
+          
+          <p:commandButton action="/praia.xhtml" style="width: 180px; margin-left: 5px; margin-right: 5px;" 
+                           value="#{messages.TEMPLATE_MENU_FOTOS_PRAIA}" ajax="false"  /> <br />
+          
+          <p:commandButton action="/chales.xhtml" style="width: 180px; margin-left: 5px; margin-right: 5px;" 
+                           value="#{messages.TEMPLATE_MENU_FOTOS_CHALES}" ajax="false" />  <br />
+          
+          <p:commandButton action="/admin.xhtml" style="width: 180px; margin-left: 5px; margin-right: 5px;" 
+                           value="#{messages.TEMPLATE_MENU_AREA_ADMIN}" ajax="false"
+                           rendered="#{mbLogin.controladorAcesso.permissaoFuncionario}" /> <br />
+          
+          <p:commandButton action="#{mbLogin.doLogout()}" style="width: 180px; 
+                           margin-left: 5px; margin-right: 5px; background-color:crimson; 
+                           color: white; font-weight: bolder; " 
+                           value="#{messages.TEMPLATE_MENU_LOGOUT}" ajax="false" />
+          
+        </p:layoutUnit>
+
+        <p:layoutUnit position="center" id="template_content" >
+          <ui:insert name="page_content" />
+        </p:layoutUnit>  
+      </p:layout>
+    </h:form>
+  </h:body>
+</html>

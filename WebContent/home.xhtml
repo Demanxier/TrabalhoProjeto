@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  <h:head>
+    <title>#{messages.PRAIAS_TITULO}</title>
+  </h:head>
+  <h:body>
+    <h:form>
+      <ui:composition template="templates/template.xhtml">
+        <ui:define name="page_content">
+          <p:accordionPanel>  
+            <p:tab title="#{messages.HOME_INFO_CHALES_TITULO}">  
+                <h:panelGrid columns="1" cellpadding="10">
+                  <h:outputText value="#{messages.HOME_INFO_CHALES_PARAGRAFO1}" /> <br />
+                  <h:outputText value="#{messages.HOME_INFO_CHALES_PARAGRAFO2}" />
+                </h:panelGrid>  
+              </p:tab>  
+            <p:tab title="#{messages.HOME_INFO_PRAIA_TITULO1}">  
+                <h:panelGrid columns="1" cellpadding="10">
+                  <h:outputText value="#{messages.HOME_INFO_PRAIA_PARAGRAFO1}" />  <br />
+                  <h:outputText value="#{messages.HOME_INFO_PRAIA_PARAGRAFO2}" />  <br />
+                  <h:outputText value="#{messages.HOME_INFO_PRAIA_PARAGRAFO3}" />
+                </h:panelGrid>  
+              </p:tab>
+              <p:tab title="#{messages.HOME_INFO_PRAIA_TITULO2}">  
+                <h:panelGrid columns="2" cellpadding="10">
+                  <h:outputText value="#{messages.HOME_INFO_PRAIA_PARAGRAFO4}" />" /> <br />
+                  <h:outputText value="#{messages.HOME_INFO_PRAIA_PARAGRAFO5}" />
+                </h:panelGrid>
+              </p:tab>  
+            </p:accordionPanel>
+        </ui:define>
+      </ui:composition>
+    </h:form>
+  </h:body>
+</html>

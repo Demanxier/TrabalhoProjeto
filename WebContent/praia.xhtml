@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <h:head>
+    <title>#{messages.PRAIAS_TITULO}</title>
+  </h:head>
+
+  <h:body style="background-image:url('resources/images/summer-background-wallpaper.jpg');">
+    <ui:composition template="templates/template.xhtml">
+      <ui:define name="page_content">
+        <h:form>
+          <div align="center">
+            
+            <h:outputLabel value="#{messages.PRAIA_GALERIA_TITULO}" 
+                           style="color: green; font-size: 1.5em; font-weight: bold;" />
+            
+            <p:panel style="background-color: transparent;" >
+              <p:galleria value="#{mbGaleria.imagensPraia}" var="beachImage" 
+                          effect="slide" effectSpeed="1000" rendered="true"
+                          panelWidth="600" panelHeight="350" frameWidth="220" 
+                          frameHeight="50" >  
+                <p:graphicImage value="resources/images/praia/#{beachImage}" />
+              </p:galleria>
+            </p:panel>
+          </div>
+        </h:form>
+      </ui:define>
+    </ui:composition>
+  </h:body>
+</html>

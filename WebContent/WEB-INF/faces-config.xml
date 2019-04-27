@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<faces-config version="2.1"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:shemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_1.xsd">
+	
+	<application>
+		<resource-bundle>
+			<base-name>br.com.trabalho.labels</base-name>
+			<var>messages</var>
+		</resource-bundle>
+	</application>
+	
+	<navigation-rule>
+		<description>Regra de navegação para operação de login</description>
+		<from-view-id>/index.xhtml</from-view-id>
+		<navigation-case>
+			<from-outcome>login_sucesso</from-outcome>
+			<to-view-id>/home.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<description>Regra para navegação de logout</description>
+		<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>logout</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<navigation-rule>
+		<description>Regra de navegação para sessões inexistentes</description>
+		<from-view-id>/*</from-view-id>
+		<navigation-case>
+			<from-outcome>sessao_invalida</from-outcome>
+			<to-view-id>/index.xhtml</to-view-id>
+			<redirect />
+		</navigation-case>
+	</navigation-rule>
+	
+	<lifecycle>
+		<phase-listener>br.trabalho.controller.ListenerAutenticacao</phase-listener>
+	</lifecycle>
+	</faces-config>

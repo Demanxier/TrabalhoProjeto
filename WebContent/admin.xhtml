@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+  <h:head>
+    <title>#{messages.PRAIAS_TITULO}</title>
+  </h:head>
+
+  <h:body>
+    <h:form>
+      <ui:composition template="templates/template.xhtml">
+        <ui:define name="page_content">
+          <p:accordionPanel>  
+            <p:tab title="#{messages.ADMIN_ACCORDION_TITULO_PRECOS}">  
+              <h:panelGrid columns="1" cellpadding="10">
+
+                <p:dataTable id="tabelaPrecos" var="diaria" value="#{mbAluguel.diariasReferencia}"
+                             paginator="true" rows="10" rowsPerPageTemplate="5,10,15"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} 
+                             {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} 
+                             {RowsPerPageDropdown}" >
+
+                  <f:facet name="header">  
+                    #{messages.ADMIN_ACCORDION_TITULO_PRECOS}
+                  </f:facet>  
+
+                  <p:column>  
+                    <f:facet name="header">  
+                      <h:outputText value="#{messages.ADMIN_TABELA_COLUNA_MES_REFERENCIA}" />  
+                    </f:facet>  
+                    <h:outputText value="#{diaria.mesReferencia}" />  
+                  </p:column>
+
+                  <p:column>  
+                    <f:facet name="header">  
+                      <h:outputText value="#{messages.ADMIN_TABELA_COLUNA_ANO_REFERENCIA}" />  
+                    </f:facet>  
+                    <h:outputText value="#{diaria.anoReferencia}" />  
+                  </p:column>
+
+                  <p:column>  
+                    <f:facet name="header">  
+                      <h:outputText value="#{messages.ADMIN_TABELA_COLUNA_DIARIA}" />  
+                    </f:facet>  
+                    <h:outputText value="#{diaria.valor}" />  
+                  </p:column>
+                </p:dataTable>
+
+              </h:panelGrid>  
+            </p:tab>  
+            <p:tab title="#{messages.ADMIN_ACCORDION_TITULO_PACOTES}">
+              <h:panelGrid columns="1" cellpadding="10">
+
+                <p:dataTable id="tabelaPacotes" var="pacote" value="#{mbAluguel.pacotes}"
+                             paginator="true" rows="10" rowsPerPageTemplate="5,10,15"
+                             paginatorTemplate="{CurrentPageReport}  {FirstPageLink} 
+                             {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} 
+                             {RowsPerPageDropdown}" >
+
+                  <f:facet name="header">  
+                    #{messages.ADMIN_TABELA_PACOTES_2013}
+                  </f:facet>  
+
+                  <p:column>
+                    <f:facet name="header">  
+                      <h:outputText value="#{messages.ADMIN_PACOTE_NOME}" />  
+                    </f:facet>  
+                    <h:outputText value="#{pacote.nome}" />  
+                  </p:column>  
+
+                  <p:column>  
+                    <f:facet name="header">  
+                      <h:outputText value="#{messages.ADMIN_PACOTE_DESCRICAO}" />  
+                    </f:facet>  
+                    <h:outputText value="#{pacote.descricao}" />  
+                  </p:column>
+
+                  <p:column>  
+                    <f:facet name="header">  
+                      <h:outputText value="#{messages.ADMIN_PACOTE_DATA_INICIO}" />  
+                    </f:facet>  
+                    <h:outputText value="#{pacote.dataInicio}" />  
+                  </p:column>
+
+                  <p:column>  
+                    <f:facet name="header">  
+                      <h:outputText value="#{messages.ADMIN_PACOTE_DATA_TERMINO}" />  
+                    </f:facet>  
+                    <h:outputText value="#{pacote.dataFim}" />  
+                  </p:column>
+
+                  <p:column>  
+                    <f:facet name="header">  
+                      <h:outputText value="#{messages.ADMIN_PACOTE_VALOR}" />  
+                    </f:facet>  
+                    <h:outputText value="#{pacote.valorFechado}" />  
+                  </p:column>
+                </p:dataTable>
+
+                <!-- Formulário para cadastro de novos pacotes -->
+                <h:outputLabel value="#{messages.ADMIN_PACOTE_CADASTRO_TITULO}" 
+                               style="color: darkolivegreen; font-size: 1.7em; 
+                               font-weight: bold;" 
+                               rendered="#{mbLogin.controladorAcesso.permissaoAdministrador}" />
+                
+                <p:spacer rendered="#{mbLogin.controladorAcesso.permissaoAdministrador}" />
+
+                <p:panel rendered="#{mbLogin.controladorAcesso.permissaoAdministrador}">
+                  <p:panelGrid columns="2">
+                    <h:outputLabel value="#{messages.ADMIN_PACOTE_NOME}" 
+                                   style="color:darkgreen; font-weight: bold;" />
+                    <p:inputText value="#{mbAluguel.pacoteCadastro.nome}" size="40" />
+
+                    <h:outputLabel value="#{messages.ADMIN_PACOTE_DATA_INICIO}" 
+                                   style="color:darkgreen; font-weight: bold;" />
+                    <p:calendar value="#{mbAluguel.pacoteCadastro.dataInicio}" 
+                                id="pacoteDataInicio" showOn="button" />
+
+                    <h:outputLabel value="#{messages.ADMIN_PACOTE_DATA_TERMINO}" 
+                                   style="color:darkgreen; font-weight: bold;" />
+                    <p:calendar value="#{mbAluguel.pacoteCadastro.dataFim}" 
+                                id="pacoteDataFim" showOn="button" />
+
+                    <h:outputLabel value="#{messages.ADMIN_PACOTE_VALOR}" 
+                                   style="color:darkgreen; font-weight: bold;" />
+                    <p:inputText value="#{mbAluguel.valorPacoteAvaliacao}" 
+                                 size="40"  maxlength="15" id="parcela" />
+
+                    <h:outputLabel value="#{messages.ADMIN_PACOTE_DESCRICAO}" 
+                                   style="color:darkgreen; font-weight: bold;" />
+
+                    <p:inputText value="#{mbAluguel.pacoteCadastro.descricao}" size="40" />
+                  </p:panelGrid>
+
+                  <p:commandButton ajax="false" value="#{messages.ADMIN_PACOTE_ACAO_SALVAR}"
+                                   action="#{mbAluguel.salvarPacote()}" 
+                                   update="tabelaPacotes" />
+                </p:panel>
+              </h:panelGrid>  
+            </p:tab>
+          </p:accordionPanel>
+        </ui:define>
+      </ui:composition>
+    </h:form>
+  </h:body>
+</html>

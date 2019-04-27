@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui" 
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+  <h:head>
+    <title>#{messages.PRAIAS_TITULO}</title>
+  </h:head>
+  <h:body>
+      <p:galleria id="galeria_chales" value="#{mbGaleria.imagensPraia}" 
+                  var="p" effect="slide" effectSpeed="1000" rendered="true"
+                  panelWidth="500" panelHeight="200" 
+                  frameWidth="100" frameHeight="70" >  
+        <p:graphicImage value="/resources/images/praia/#{p}" />
+      </p:galleria>
+  </h:body>
+</html>
